@@ -2,7 +2,7 @@
 [![R-CMD-check](https://github.com/jcpsantiago/beamter/workflows/R-CMD-check/badge.svg)](https://github.com/jcpsantiago/beamter/actions)
 <!-- badges: end -->
 
-# beamter
+# beamter [bəˈʔamtɐ]
 Programmatically create a tidymodels [recipe](https://github.com/tidymodels/recipes/) from a registry of steps.
 
 ## What is this?
