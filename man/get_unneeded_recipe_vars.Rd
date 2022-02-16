@@ -2,7 +2,7 @@
 % Please edit documentation in R/getters.R
 \name{get_unneeded_recipe_vars}
 \alias{get_unneeded_recipe_vars}
-\title{Title}
+\title{Get unneeded recipe vars}
 \usage{
 get_unneeded_recipe_vars(
   unprepped_recipe_full,
@@ -11,11 +11,15 @@ get_unneeded_recipe_vars(
 )
 }
 \arguments{
-\item{features}{}
+\item{unprepped_recipe_full}{Unprepped recipe, still with all steps included.}
+
+\item{feature_and_deps_names_used}{Character vector of features and dependencies needed.}
+
+\item{features}{A character vector of the features needed for your model.}
 }
 \value{
-
+A character vector.
 }
 \description{
-Title
+Get unneeded recipe vars
 }

@@ -2,16 +2,18 @@
 % Please edit documentation in R/getters.R
 \name{get_base_features_needed}
 \alias{get_base_features_needed}
-\title{Title}
+\title{Get base faetures needed}
 \usage{
 get_base_features_needed(feature_registry, feature)
 }
 \arguments{
-\item{feature}{}
+\item{feature_registry}{A vector of all the \verb{step_feature_*}s available.}
+
+\item{feature}{The name of the feature you are interested in collecting base features from.}
 }
 \value{
-
+A character vector.
 }
 \description{
-Title
+Get base faetures needed
 }

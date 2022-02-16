@@ -38,4 +38,5 @@ step_feature <- function(step_fn, step_name, deps, args) {
 #'
 #' @return A list.
 #' @export
-step_mutate_feat <- purrr::partial(step_feature, step_fn = recipes::step_mutate)
+step_mutate_feat <- function(step_name, deps, args)
+  step_feature(recipes::step_mutate, step_name, deps, args)

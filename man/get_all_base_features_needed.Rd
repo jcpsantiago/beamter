@@ -2,16 +2,18 @@
 % Please edit documentation in R/getters.R
 \name{get_all_base_features_needed}
 \alias{get_all_base_features_needed}
-\title{Title}
+\title{Get all base features needed}
 \usage{
 get_all_base_features_needed(feature_registry, features)
 }
 \arguments{
-\item{features}{}
+\item{feature_registry}{A vector of all the \verb{step_feature_*}s available.}
+
+\item{features}{A character vector of the features needed for your model.}
 }
 \value{
-
+A character vector.
 }
 \description{
-Title
+Get all base features needed
 }

@@ -15,6 +15,8 @@ init_recipe <- function(df_for_recipe, recipe_roles) {
 #' Build a recipe call
 #'
 #' @param feature_registry A vector of all the `step_feature_*`s available.
+#' @param recipe A recipe object.
+#' @param feature The name of the feature needed.
 #'
 #' @return An R call.
 build_recipe_call <- function(feature_registry, recipe, feature) {
@@ -40,19 +42,19 @@ assemble_recipe <- function(feature_registry, features, df_for_recipe, recipe_ro
   build_recipe <- purrr::partial(build_recipe_call, feature_registry = feature_registry)
 
 
-  unprepped_recipe_full <- features_and_deps_used %>%
+  unprepped_recipe_full <- features_and_deps_used |>
     purrr::reduce(
       build_recipe,
       .init = unprepped_recipe_init
-    ) %>%
-    eval(.)
+    ) |>
+    eval()
 
   unneeded_recipe_vars <- get_unneeded_recipe_vars(
     unprepped_recipe_full, features_and_deps_used, features
   )
 
-  unprepped_recipe_full %>%
+  unprepped_recipe_full |>
     recipes::step_rm(
-      dplyr::all_of(unneeded_recipe_vars)
+      poorman::all_of(unneeded_recipe_vars)
     )
 }

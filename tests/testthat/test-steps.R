@@ -3,7 +3,7 @@ test_that("creating a step works", {
     recipes::step_mutate,
     "hour",
     "created_at",
-    lubridate::hour(created_at)
+    format(strptime(created_at,"%H:%M:%S"),'%H')
   )
 
   expect_named(
@@ -20,6 +20,6 @@ test_that("creating a step works", {
   )
   expect_equal(
     step_mutate_test$hour$args$hour,
-    quote(lubridate::hour(created_at))
+    quote(format(strptime(created_at,"%H:%M:%S"),'%H'))
   )
 })

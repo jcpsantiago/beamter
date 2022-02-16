@@ -2,16 +2,18 @@
 % Please edit documentation in R/getters.R
 \name{collect_features_and_deps}
 \alias{collect_features_and_deps}
-\title{Title}
+\title{Collect features and dependencies}
 \usage{
 collect_features_and_deps(feature_registry, features)
 }
 \arguments{
-\item{features}{}
+\item{feature_registry}{A vector of all the \verb{step_feature_*}s available.}
+
+\item{features}{A character vector of the features needed for your model.}
 }
 \value{
-
+A character vector.
 }
 \description{
-Title
+Collect features and dependencies
 }

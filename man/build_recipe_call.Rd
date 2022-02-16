@@ -8,6 +8,10 @@ build_recipe_call(feature_registry, recipe, feature)
 }
 \arguments{
 \item{feature_registry}{A vector of all the \verb{step_feature_*}s available.}
+
+\item{recipe}{A recipe object.}
+
+\item{feature}{The name of the feature needed.}
 }
 \value{
 An R call.

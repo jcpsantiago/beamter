@@ -61,8 +61,8 @@ Use it as you would any other output from `recipes::recipe()`.
 
 To use it in a production context, you probably want to cut down the fat:
 ```r
-recipes::prep(unprepped_recipe) %>%
-  butcher::butcher(.)
+recipes::prep(unprepped_recipe) |>
+  butcher::butcher()
   
 # aggressive size savings
 prepped_recipe$orig_lvls <- NULL

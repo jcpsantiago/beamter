@@ -4,7 +4,7 @@
 \alias{step_mutate_feat}
 \title{Create mutate step}
 \usage{
-step_mutate_feat(...)
+step_mutate_feat(step_name, deps, args)
 }
 \arguments{
 \item{step_name}{The name of the step/feature.}

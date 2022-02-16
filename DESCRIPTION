@@ -13,7 +13,8 @@ RoxygenNote: 7.1.2
 Imports:
     purrr,
     recipes,
-    rlang
+    rlang,
+    poorman
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
