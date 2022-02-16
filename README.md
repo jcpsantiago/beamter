@@ -3,7 +3,7 @@
 <!-- badges: end -->
 
 # beamter [bəˈʔamtɐ]
-Programmatically create a tidymodels [recipe](https://github.com/tidymodels/recipes/) from a registry of steps.
+Programmatically create a tidymodels [recipes](https://github.com/tidymodels/recipes/) from a registry of steps.
 
 ## What is this?
 I needed to build recipes programmatically, because the model training pipeline I built with [DVC](https://dvc.org) was used for multiple models at the same time (think different mdodel _variants_ trained on different populations, such as countries or industry sectors). 
