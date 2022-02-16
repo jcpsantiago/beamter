@@ -33,7 +33,8 @@ feature_registry <- c(
   step_mutate_feat("hour", "created_at", lubridate::hour(created_at)),
   step_mutate_feat("is_free_mail", "email", as.integer(isfreemail::is_free_email(email))),
   step_mutate_feat("email_name", "email", tolower(stringr::str_replace(email, "@.*", ""))),
-  # features can depend on other features in the registry, dependencies are resolved when creating the recipe
+  # features can depend on other features in the registry,
+  # dependencies are resolved when creating the recipe
   step_mutate_feat("n_digits_in_email", "email_name", stringr::str_count(email_name, "[0-9]"))
 )
 ```
