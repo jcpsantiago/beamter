@@ -30,12 +30,13 @@ You don't need to define features that are used as-is from the raw data e.g. som
 ```r
 feature_registry <- c(
   # "base features" don't depend on anything else in the feature registry
-  step_mutate_feat("hour", "created_at", lubridate::hour(created_at)),
-  step_mutate_feat("is_free_mail", "email", as.integer(isfreemail::is_free_email(email))),
-  step_mutate_feat("email_name", "email", tolower(stringr::str_replace(email, "@.*", ""))),
+  step_mutate_feat("hour", "created_at", format(strptime(created_at,"%H:%M:%S"),'%H')),
+  # args are: `feature name`, `dependencies` i.e. the cols in the data needed for the calculations and
+  # the actual code passed to `step_mutate`
+  step_mutate_feat("email_name", "email", tolower(gsub("@.*", "", email))),
   # features can depend on other features in the registry,
   # dependencies are resolved when creating the recipe
-  step_mutate_feat("n_digits_in_email", "email_name", stringr::str_count(email_name, "[0-9]"))
+  step_mutate_feat("n_chars_in_email", "email_name", nchar(email_name))
 )
 ```
 
@@ -44,7 +45,7 @@ Let me know if you need others.
 
 Once you have your feature registry, you need to know which features you want:
 ```r
-features_needed <- c("hour", "n_digits_in_email")
+features_needed <- c("hour", "n_chars_in_email")
 ```
 this can come from some YAML configuration where you define which features the
 different models use, or just straight in a script if you're using beamter as a
