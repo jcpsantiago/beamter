@@ -32,11 +32,8 @@ step_feature <- function(step_fn, step_name, deps, args) {
 
 #' Create mutate step
 #'
-#' @param step_name The name of the step/feature.
-#' @param deps A vector of strings with names of dependencies e.g. c("email").
-#' @param args Arguments passed to `step_fn`.
+#' @param ... step_name, deps and args
 #'
 #' @return A list.
 #' @export
-step_mutate_feat <- function(step_name, deps, args)
-  step_feature(recipes::step_mutate, step_name, deps, args)
+step_mutate_feat <- purrr::partial(step_feature, step_fn = recipes::step_mutate)

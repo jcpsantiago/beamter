@@ -4,14 +4,10 @@
 \alias{step_mutate_feat}
 \title{Create mutate step}
 \usage{
-step_mutate_feat(step_name, deps, args)
+step_mutate_feat(...)
 }
 \arguments{
-\item{step_name}{The name of the step/feature.}
-
-\item{deps}{A vector of strings with names of dependencies e.g. c("email").}
-
-\item{args}{Arguments passed to \code{step_fn}.}
+\item{...}{step_name, deps and args}
 }
 \value{
 A list.
