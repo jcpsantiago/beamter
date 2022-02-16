@@ -13,7 +13,7 @@ Creating an über-recipe with all the features/steps was not possible, because s
 I reached out to the [RStudio community](https://community.rstudio.com/t/programmatically-disable-recipe-steps-for-deployment/111194), but it seems I had a very niche use-case. It happens 😅. 
 In any case, here is my solution in all its open-source glory.
 
-It's also a great base to build your own feature store as a package, shared among
+It's also a great base to build your own "feature store as a package", shared among
 team-members or used across different ML projects.
 
 ## How to use beamter?
