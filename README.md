@@ -13,6 +13,9 @@ Creating an über-recipe with all the features/steps was not possible, because s
 I reached out to the [RStudio community](https://community.rstudio.com/t/programmatically-disable-recipe-steps-for-deployment/111194), but it seems I had a very niche use-case. It happens 😅. 
 In any case, here is my solution in all its open-source glory.
 
+It's also a great base to build your own feature store as a package, shared among
+team-members or used across different ML projects.
+
 ## How to use beamter?
 
 Get it from this repo
@@ -42,4 +45,31 @@ Once you have your feature registry, you need to know which features you want:
 ```r
 features_needed <- c("hour", "n_digits_in_email")
 ```
+this can come from some YAML configuration where you define which features the
+different models use, or just straight in a script if you're using beamter as a
+feature store for a single model.
 
+Then just assemble the recipe:
+```r
+unprepped_recipe <- assemble_recipe(
+  feature_registry, features, df_for_recipe, recipe_roles
+)
+```
+
+Use it as you would any other output from `recipes::recipe()`.
+
+To use it in a production context, you probably want to cut down the fat:
+```r
+recipes::prep(unprepped_recipe) %>%
+  butcher::butcher(.)
+  
+# aggressive size savings
+prepped_recipe$orig_lvls <- NULL
+prepped_recipe$template <- NULL
+prepped_recipe$term_info <- NULL
+prepped_recipe$retained <- NULL
+
+# these two elements are needed for baking and should never be removed!
+# prepped_recipe$last_term_info
+# prepped_recipe$var_info
+```
