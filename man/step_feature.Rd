@@ -21,10 +21,3 @@ A list.
 \description{
 Create step
 }
-\examples{
-step_feature(
-    recipes::step_mutate,
-    "hour",
-    c("created_at"),
-    lubridate::hour(created_at))
-}

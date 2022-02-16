@@ -19,10 +19,3 @@ A list.
 \description{
 Create mutate step
 }
-\examples{
-feature_registry <- c(
-    step_mutate_feature(
-        "hour",
-        c("created_at"),
-        lubridate::hour(created_at))
-}
