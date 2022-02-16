@@ -1,4 +1,6 @@
-> You need form B-42 for that.
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/jcpsantiago/beamter/workflows/R-CMD-check/badge.svg)](https://github.com/jcpsantiago/beamter/actions)
+<!-- badges: end -->
 
 # beamter
 Programmatically create a tidymodels [recipe](https://github.com/tidymodels/recipes/) from a registry of steps.
