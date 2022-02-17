@@ -53,8 +53,10 @@ assemble_recipe <- function(feature_registry, features, df_for_recipe, recipe_ro
     unprepped_recipe_full, features_and_deps_used, features
   )
 
+  all_unneeded <- purrr::partial(dplyr::all_of, unneeded_recipe_vars)
+
   unprepped_recipe_full |>
     recipes::step_rm(
-      dplyr::all_of(unneeded_recipe_vars)
+      all_unneeded()
     )
 }
