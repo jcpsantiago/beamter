@@ -1,6 +1,6 @@
 Package: beamter
 Title: Programmaticaly Build Tidymodel Recipes
-Version: 0.0.0.9000
+Version: 0.0.1.9000
 Authors@R: 
     person("João", "Santiago",
     email = "me@jcpsantiago.xyz", 
@@ -14,7 +14,7 @@ Imports:
     purrr,
     recipes,
     rlang,
-    poorman
+    dplyr
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
