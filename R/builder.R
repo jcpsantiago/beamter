@@ -19,12 +19,14 @@ init_recipe <- function(df_for_recipe, recipe_roles) {
 #' @param feature The name of the feature needed.
 #'
 #' @return An R call.
-build_recipe_call <- function(feature_registry, recipe, feature) {
-  rlang::call2(
-    feature_registry[[feature]]$step_fn,
-    recipe,
-    !!!feature_registry[[feature]]$args
-  )
+build_recipe_call <- function(feature_registry) {
+  function(recipe, feature){
+    rlang::call2(
+      feature_registry[[feature]]$step_fn,
+      recipe,
+      !!!feature_registry[[feature]]$args
+    )
+  }
 }
 
 #' Assemble a recipe
@@ -39,7 +41,7 @@ build_recipe_call <- function(feature_registry, recipe, feature) {
 assemble_recipe <- function(feature_registry, features, df_for_recipe, recipe_roles) {
   unprepped_recipe_init <- init_recipe(df_for_recipe, recipe_roles)
   features_and_deps_used <- collect_features_and_deps(feature_registry, features)
-  build_recipe <- purrr::partial(build_recipe_call, feature_registry = feature_registry)
+  build_recipe <- build_recipe_call(feature_registry)
 
 
   unprepped_recipe_full <- features_and_deps_used |>
