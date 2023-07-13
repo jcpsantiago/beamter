@@ -1,6 +1,6 @@
 Package: beamter
 Title: Programmaticaly Build Tidymodel Recipes
-Version: 0.0.1.9000
+Version: 0.1.0.9000
 Authors@R: 
     person("João", "Santiago",
     email = "me@jcpsantiago.xyz", 
@@ -9,7 +9,7 @@ Description: Programmaticaly build tidymodel recipes from a pool of pre-coded st
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.3
 Imports:
     purrr,
     recipes,
