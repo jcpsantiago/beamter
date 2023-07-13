@@ -3,6 +3,7 @@
 export(assemble_recipe)
 export(collect_features_and_deps)
 export(get_all_base_features_needed)
+export(get_external_features_needed)
 export(get_registry_features_needed)
 export(get_unneeded_recipe_vars)
 export(step_feature)

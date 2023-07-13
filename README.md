@@ -2,22 +2,22 @@
 [![R-CMD-check](https://github.com/jcpsantiago/beamter/workflows/R-CMD-check/badge.svg)](https://github.com/jcpsantiago/beamter/actions)
 <!-- badges: end -->
 
+> Der Nächste, bitte!
+
 # beamter [bəˈʔamtɐ]
-Programmatically create a tidymodels [recipes](https://github.com/tidymodels/recipes/) from a registry of steps.
+Programmatically create tidymodels [recipes](https://github.com/tidymodels/recipes/) from a registry of steps.
+
 
 ## What is this?
-I needed to build recipes programmatically, because the model training pipeline I built with [DVC](https://dvc.org) was used for multiple models at the same time (think different mdodel _variants_ trained on different populations, such as countries or industry sectors). 
-This meant a preprocessing recipe would need to be different for each of the models, because it would be possible each would use slightly different features. 
-Creating an über-recipe with all the features/steps was not possible, because some data populations lacked some data fields, which would lead to errors.
+`beamter` let's you create a registry of `{recipes}` preprocessing steps. 
 
-I reached out to the [RStudio community](https://community.rstudio.com/t/programmatically-disable-recipe-steps-for-deployment/111194), but it seems I had a very niche use-case. It happens 😅. 
-In any case, here is my solution in all its open-source glory.
+At work, I built a model training pipeline with DVC many models at once. For this flexibility, I had to build `recipes` step-by-step from a list of features. Models can have different features, or use different data. This means each model has its own preprocessing `recipe`.
 
-It's also a great base to build your own "feature store as a package", shared among
-team-members or used across different ML projects.
+I reached out to the [RStudio community](https://community.rstudio.com/t/programmatically-disable-recipe-steps-for-deployment/111194), but it seems I had a very niche use-case. It happens 😅. In any case, here is my solution in all its open-source glory.
+
+`beamter` is also a great base to build your own "feature store as a package". You could then share it among team-members, or use across different ML projects. Keep your ML work DRY 🧐
 
 ## How to use beamter?
-
 Get it from this repo
 ```r
 remotes::install_github("jcpsantiago/beamter")

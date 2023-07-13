@@ -36,6 +36,30 @@ get_base_features_needed <- function(feature_registry, feature) {
     `c`(deps_to_explore)
 }
 
+#' Get external features needed
+#'
+#' @param feature_registry A vector of all the `step_feature_*`s available.
+#' @param feature The name of the feature you are interested in collecting base features
+#'
+#' @return A character vector.
+#' @export
+get_external_features_needed <- function(feature_registry, feature) {
+  deps <- feature_registry[feature][[1]]$deps
+
+  if (is.null(deps)) {
+    return(feature)
+  }
+
+  deps_to_explore <- deps
+
+  deps_to_explore %>%
+    purrr::map(~ get_external_features_needed(feature_registry, .x)) %>%
+    purrr::flatten_chr(.) %>%
+    # order is important! keep base features always first in the vector
+    # this is a naive attempt at a DAG
+    `c`(., deps_to_explore)
+}
+
 #' Get all base features needed
 #'
 #' @param feature_registry A vector of all the `step_feature_*`s available.
