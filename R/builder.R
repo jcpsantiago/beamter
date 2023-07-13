@@ -57,11 +57,8 @@ assemble_recipe <- function(feature_registry, features, df_for_recipe, recipe_ro
 
   all_unneeded <- purrr::partial(dplyr::all_of, unneeded_recipe_vars)
 
-  unprepped_recipe_full |> recipes::step_rm(all_unneeded()) |>
-    recipes::update_role(all_unneeded(), new_role = "unneeded") |>
-    # since recipes 1.0.0 new data for baking is strictly checked i.e. it must be
-    # the same as what was used to train the recipe. This breaks beamter downstream,
-    # because it is possible you're training with data you won't need in prod.
-    # the below line ensures this is not a problem.
-    recipes::update_role_requirements("unneeded", bake = FALSE)
+  unprepped_recipe_full |>
+    recipes::step_rm(
+      all_unneeded()
+    )
 }
